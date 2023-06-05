@@ -17,6 +17,11 @@ router.get('/', (req, res) => {
       pic: '/images/coffee-cat.jpg'
   }]
   
+  router.post('/', (req, res) => {
+    console.log(req.body)
+    res.send('POST /places')
+  })
+  
       
     res.render('places/index', { places })
 
