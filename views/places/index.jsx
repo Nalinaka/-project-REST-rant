@@ -5,20 +5,25 @@ const Def = require('../default')
 //     res.render('error404')
 //   })
 function index (data) {
-  let placesFormatted = data.places.map((place) => {
+  let placesFormatted = data.places.map((place, index) => {
     return (
       <div className="col-sm-6">
-        <h2>{place.name}</h2>
+        <h2>
+          <a href={`/places/${index}`} >
+            {place.name}
+          </a>
+        </h2>
         <p className="text-center">
           {place.cuisines}
-          </p>
+        </p>
         <img src={place.pic} alt={place.name} />
         <p className="text-center">
-        Located in {place.city}, {place.state}
-          </p>
+          Located in {place.city}, {place.state}
+        </p>
       </div>
     )
   })
+  
   return (
     <Def>
         <main>
