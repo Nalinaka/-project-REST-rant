@@ -1,7 +1,7 @@
 const React = require('react')
 const Def = require('../default')
 
-function new_form () {
+function New () {
     return (
     <Def>
     <main>
@@ -11,10 +11,10 @@ function new_form () {
     <label htmlFor="name">Place Name</label>
     <input className="form-control" id="name" name="name" required />
         </div>
-        <div className="form-group" >
+      {/* <div className="form-group" >
     <label htmlFor="pic">Place Picture</label>
     <input className="form-control" id="pic" name="pic" />
-        </div>
+        </div>  */}
         <div className="form-group" >
     <label htmlFor="city">City</label>
     <input className="form-control" id="city" name="city" />
@@ -35,11 +35,11 @@ function new_form () {
     )
 }
 
-router.get('/new', (req, res) => {
-    res.render('places/new')
-  })
+// router.get('/new', (req, res) => {
+//     res.render('places/new')
+//   })
 
-module.exports = new_form
+module.exports = New
 
 
   
