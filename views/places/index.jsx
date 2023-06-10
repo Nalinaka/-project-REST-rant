@@ -1,5 +1,6 @@
 const React = require('react')
 const Def = require('../default')
+const places = require('../../models/places')
 
 //   app.get('*', (req, res) => {
 //     res.render('error404')
@@ -9,7 +10,7 @@ function index (data) {
     return (
       <div className="col-sm-6">
         <h2>
-          <a href={`/places/${index}`} >
+          <a href={`/places/${places.id}`} >
             {place.name}
           </a>
         </h2>
