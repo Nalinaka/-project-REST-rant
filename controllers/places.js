@@ -60,7 +60,6 @@ router.delete('/:id/rant/:rantId', (req, res) => {
 
 module.exports = router
 
-
 // const express = require("express");
 // const router = express.Router();
 // const places = require("../models/places.js");
