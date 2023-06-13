@@ -15,11 +15,14 @@ function index (data) {
           </a>
         </h2>
         <p className="text-center">
-          {place.cuisines}
+        Available cuisines: {place.cuisines}
         </p>
         <img src={place.pic} alt={place.name} />
         <p className="text-center">
           Located in {place.city}, {place.state}
+        </p>
+        <p className="text-center">
+          Established: {place.founded}
         </p>
       </div>
     )
