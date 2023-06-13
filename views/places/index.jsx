@@ -8,11 +8,11 @@ const places = require('../../models/places')
 function index (data) {
   let placesFormatted = data.places.map((place, index) => {
     return (
-      <div className="col-sm-6">
+      <div className="col-sm-6" key={place.id}>
         <h2>
           <a href={`/places/${places.id}`} >
             {place.name}
-          </a>
+          </a>     
         </h2>
         <p className="text-center">
         Available cuisines: {place.cuisines}
