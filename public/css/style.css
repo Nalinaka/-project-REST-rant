@@ -2,6 +2,19 @@ h1 {
     text-align: center;
     color: cornflowerblue;
   }
+
+  h2, h3, h4 {
+    text-align: center;
+    color: blue
+  }
+
+  img {
+    height: 60vh;
+    width: 55vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
   
   nav {
     background-color: cornflowerblue;
