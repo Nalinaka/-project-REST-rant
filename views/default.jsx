@@ -1,4 +1,6 @@
 const React = require('react')
+const currentYear = new Date().getFullYear()
+const footerText = `Site Created By Nalini Krishan © IWBOS 2023-${currentYear}`
 
 function Def (html) {
     return (
@@ -24,6 +26,7 @@ function Def (html) {
         </nav>
                 {html.children}
             </body>
+            <footer>{footerText}</footer>
         </html>
     )
 }

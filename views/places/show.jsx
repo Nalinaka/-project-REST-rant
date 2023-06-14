@@ -50,17 +50,17 @@ function show (data) {
   );
 }
 
-router.get('/:id', (req, res) => {
-  db.Place.findById(req.params.id)
-  .then(place => {
-      res.render('places/show', { place })
-  })
-  .catch(err => {
-      console.log('err', err)
-      res.render('error404')
-  })
-})
-
-
-
 module.exports = show;
+
+
+// router.get('/:id', (req, res) => {
+//   db.Place.findById(req.params.id)
+//   .then(place => {
+//       res.render('places/show', { place })
+//   })
+//   .catch(err => {
+//       console.log('err', err)
+//       res.render('error404')
+//   })
+// })
+
