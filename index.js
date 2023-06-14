@@ -1,7 +1,9 @@
 // Modules and Globals
 require('dotenv').config()
-const express = require('express')
-const app = express()
+// require express
+let express = require('express')
+//initialize express
+let app = express()
 const methodOverride = require('method-override')
 
 
@@ -12,12 +14,12 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-
+app.use('/places', require('./controllers/places'))
 
 // app.get('/', (req, res) => {
 //     res.send('Hello world!')
 // })
-app.use('/places', require('./controllers/places'))
+
 
 
 app.get('/', (req, res) => {
