@@ -31,6 +31,7 @@ function edit_form (data) {
             <input className="form-control" id="cuisines" name="cuisines" required/>
         </div>
         </div>
+        <div className="form-group"></div>
             <input className="btn btn-primary" type="submit" value="Add Place" />
             </form>
         </main>
