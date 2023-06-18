@@ -9,7 +9,17 @@ function new_form (data) {
           {data.message}
         </h4>
       )
-    }
+    }}
+    if (data.place.comments.length) {
+      let sumRatings = data.place.comments.reduce((tot, c) => {
+        return tot + c.stars
+      }, 0)
+      let averageRating = sumRatings / data.place.comments.length
+    rating = (
+      <h3>
+      {Math.round(averageRating)} stars   
+      </h3>
+    )    
     return (
     <Def>
     <main>
@@ -47,11 +57,12 @@ function new_form (data) {
     )
 }
 
-// router.get('/new', (req, res) => {
-//     res.render('places/new')
-//   })      commented out col-sm-4 under founded form above...
-
 module.exports = new_form
 
 
+// removed following code from inside stars - Math.round(averageRating)
+
+// router.get('/new', (req, res) => {
+//     res.render('places/new')
+//   })      commented out col-sm-4 under founded form above...
   

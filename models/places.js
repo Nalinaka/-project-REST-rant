@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   pic: { type: String, default: 'http://placekitten.com/350/350'},
@@ -10,7 +11,7 @@ const placeSchema = new mongoose.Schema({
     min: [1673, 'Surely not that old?!'],
     max: [new Date().getFullYear(), 'This is the future!']
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+  comments: [{ type: mongoose.Schema.Types.ObjectID, ref: 'Comment' }]
 })
 
 

@@ -1,6 +1,6 @@
 const React = require('react')
 const Def = require('../default')
-const new_form = require('./new')
+const new_form = require('./new') 
 
 
 // code taken out from form - <label htmlFor="content" className="form-label">Your Comment</label>
