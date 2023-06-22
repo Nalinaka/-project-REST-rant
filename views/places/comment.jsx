@@ -8,7 +8,7 @@ function comment_form () {
     return (
         <Def>
         <main>
-        <h1>Comments</h1>
+        <h1>Comments on Places</h1>
         <form method="POST" action="/places/:id/comment">
         <div className='row g-3'>
         <div className="form group col-12">
@@ -28,7 +28,7 @@ function comment_form () {
         {/* <br/> */}
         <div className="form-check">
         <label htmlFor="rant" className="form-check-label">Rant</label>
-        <input className="form-check-input" type="checkbox" id="rant-checkbox" name="rant" required/>
+        <input className="form-check-input" type="checkbox" id="rant-checkbox" name="Rant" required/>
         </div>
         <div className="form-group"></div>
         <input className="btn btn-primary" type="submit" value="Add Comment" />
@@ -39,3 +39,5 @@ function comment_form () {
 }
 
 module.exports = comment_form
+
+
