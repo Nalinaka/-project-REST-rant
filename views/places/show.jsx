@@ -5,18 +5,40 @@ const comments = require("../../models/comment.js");
 
 function show(data) {
   console.log(data.place.id, "go");
-  let comments = <h3 className="inactive">No comments yet!</h3>;
+  let comments = <h3 className="inactive">Leave a comment!</h3>;
+  let rating = <h3 className="inactive">Not yet rated</h3>;
   if (data.place.comments.length) {
     comments = data.place.comments.map((c) => {
-      return (
-        <div className="border">
-          <h2 className="rant">{c.rant ? "Rant! :(" : "Rave! :)"}</h2>
-          <h4>{c.content}</h4>
-          <h3>
-            <strong>- {c.author}</strong>
-          </h3>
-          <h4>Rating: {c.stars}</h4>
-        </div>
+      // add rating
+    let sumRatings = data.place.comments.reduce((total, comment) => {
+  return total + comment.stars;
+    }, 0)
+
+    let averageRating = Math.round(sumRatings / data.place.comments.length);
+      let stars = "";
+      for (let i = 0; i < averageRating; i++) {
+        stars += "⭐️";
+      }
+      rating = <h3>{stars} stars</h3>;
+  return (
+    <div className="border">
+      <h2 className="rant">{c.rant ? "Rant! :(" : "Rave! :)"}</h2>
+      <h4>{c.content}</h4>
+      <h3>
+      <strong>- {c.author}</strong>
+      </h3>
+      <h4>Rating: {c.stars}</h4>
+      <form
+            method="POST"
+            action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`}
+          >
+            <input
+              type="submit"
+              className="btn btn-danger"
+              value="Delete Comment"
+            />
+          </form>
+      </div>
       );
     });
   }
@@ -25,7 +47,7 @@ function show(data) {
       <main>
         <div className="row">
           <div className="col-sm-6">
-            <img src={data.place.pic} alt={data.place.name} />
+            <img className="img-fluid" src={data.place.pic} alt={data.place.name} />
             <h3>
               Located in {data.place.city}, {data.place.state}{" "}
             </h3>
@@ -33,8 +55,9 @@ function show(data) {
           <div className="col-sm-6">
             <h1>{data.place.name}</h1>
             <div>
-              <h2>Rating</h2>
-              <p>No Ratings</p>
+            <h2>Rating</h2>
+              {rating}
+              <br />
             </div>
             <br />
             <div>
@@ -42,10 +65,10 @@ function show(data) {
               <h3>{data.place.showEstablished()}</h3>
               <h4>Serving {data.place.cuisines}</h4>
             </div>
-            <a href={`/places/${data.id}/edit`} className="btn btn-warning">
+            <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">
               Edit
             </a>
-            <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
+            <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}>
               <button type="submit" className="btn btn-danger">
                 Delete
               </button>
@@ -70,7 +93,6 @@ function show(data) {
                 id="content"
                 name="content"
               />
-              {/* ADD HERE */}
               <div className="col-md-4">
                 <label htmlFor="author" className="form-label">
                   Your Name

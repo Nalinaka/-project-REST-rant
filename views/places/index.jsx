@@ -1,8 +1,6 @@
 const React = require('react')
 const Def = require('../default')
 
-
-
 // const places = require('../models/places')
 
 //   app.get('*', (req, res) => {
@@ -28,10 +26,10 @@ function index (data) {
         <p className="text-center">
           Located in {place.city}, {place.state}
         </p>
-        <p className="text-center">
+        {/* <p className="text-center">
           Established: {place.founded}
-        </p>
-      </div>
+        </p> */}
+        </div>
     )
   })
   
