@@ -1,7 +1,8 @@
-const express = require('express')
-const router = express.Router();
-const places = require("../models/places.js");
+const router = require('express').Router()
+// const router = express.Router();
+// const places = require("../models/places.js");
 const db = require('../models')
+const mongoose = require("mongoose")
 
 router.get('/', (req, res) => {
   db.Place.find()
@@ -42,7 +43,7 @@ router.get('/new', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  db.Place.findById(req.params.id)
+  db.Place.findByIdAndUpdate(req.params.id)
   .populate('comments')
   .then(place => {
       console.log(place.comments)
@@ -93,11 +94,12 @@ router.get('/:id/edit', (req, res) => {
 
 router.post('/:id/comment', (req, res) => {
   console.log(req.body)
+  req.body.rant = req.body.rant ? true : false
     db.Place.findById(req.params.id)
     .then(place => {
         // Todo: Create comment
     db.Comment.create(req.body)
-    then(comment => {
+    .then(comment => {
       place.comment.push(comment.id)
       place.save()
       .then(() => {
@@ -105,18 +107,17 @@ router.post('/:id/comment', (req, res) => {
       })
     })
     .catch(err => {
+      console.log('err', err) //adding in this console log, did not work without - check to see if it works with 
         res.render('error404')
     })
     })
     .catch(err => {
+      console.log('err', err) //adding in this console log, did not work without - check to see if it works with 
         res.render('error404')
     })
-
   })
 
-  // from here
-
-  router.delete('/:id/comment/:commentId', (req, res) => {
+    router.delete('/:id/comment/:commentId', (req, res) => {
     db.Comment.findByIdAndDelete(req.params.commentId)
       .then(() => {
         res.redirect(`/places/${req.params.id}`)
@@ -124,10 +125,21 @@ router.post('/:id/comment', (req, res) => {
       .catch(err => {
         console.log('err', err)
         res.render('error404')
-      })
-  })
+})
+})
+
+//   router.delete('/:id/rant/:rantId', (req, res) => {
+//     res.send('GET /places/:id/rant/:rantId stub')
+// })
+    
 
   module.exports = router
+
+  // cut off this below code and replaced with line 134 
+
+
+
+
 
   // router.get('/new', (req, res) => {
   //   res.render('places/new')

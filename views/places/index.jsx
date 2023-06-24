@@ -26,13 +26,9 @@ function index (data) {
         <p className="text-center">
           Located in {place.city}, {place.state}
         </p>
-        {/* <p className="text-center">
-          Established: {place.founded}
-        </p> */}
         </div>
     )
   })
-  
   return (
     <Def>
         <main>

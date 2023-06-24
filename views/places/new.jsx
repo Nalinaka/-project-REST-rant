@@ -1,20 +1,11 @@
 const React = require('react')
 const Def = require('../default')
 
-function new_form (data) {
-  let message = ''                 
-    if (data.message) {
-      message = (
-        <h4 className="alert-danger">
-          {data.message}
-        </h4>
-      )
-    }}    
+function new_form (data) {   
     return (
     <Def>
     <main>
-        <h1>Add a New Place</h1>  
-        {message}  
+        <h1>Add a New Place</h1>   
     <form method="POST" action="/places">
         <div className="form-group" >
     <label htmlFor="name">Place Name</label>
@@ -44,9 +35,19 @@ function new_form (data) {
     </form>
     </main>
         </Def>
-    )
+    )}
     
-module.exports = new_form
+    module.exports = new_form
+
+
+  // let message = ''                 
+  //   if (data.message) {
+  //     message = (
+  //       <h4 className="alert-danger">
+  //         {data.message}
+  //       </h4>
+  //     )
+  //   }} 
 
 
 // removed following code from inside stars - Math.round(averageRating)

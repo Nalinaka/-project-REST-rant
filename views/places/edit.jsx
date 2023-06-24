@@ -10,7 +10,7 @@ function edit_form (data) {
         <div className='row'>
         <div className="form-group col-sm-4">
             <label htmlFor="founded">Founded</label>
-            <input className="form-control" id="founded" name="founded" value={data.place.founded} />
+            <input className="form-control" id="founded" name="founded" value={data.place.founded} required />
         </div>    
         <div className="form-group col-sm-6">
             <label htmlFor="name">Place Name</label>
@@ -40,7 +40,7 @@ function edit_form (data) {
             </form>
         </main>
         </Def>
-    );
+    )
 }
 
 module.exports = edit_form
