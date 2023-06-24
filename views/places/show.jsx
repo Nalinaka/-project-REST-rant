@@ -10,6 +10,7 @@ function show(data) {
     comments = data.place.comments.map(c => {
     //add ratings
     let sumRatings = data.place.comments.reduce((total, comment) => {
+      console.log(comment)
       return total + comment.stars;
     }, 0);
 
