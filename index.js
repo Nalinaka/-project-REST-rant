@@ -5,7 +5,7 @@ const express = require('express')
 const methodOverride = require('method-override')
 //initialize express
 const app = express()
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 
 
@@ -22,6 +22,12 @@ app.use('/places', require('./controllers/places'))
 app.get('/', (req, res) => {
   res.render('home')
 })
+
+mongoose.connect(process.env.MONGO_URI, 
+  {useNewUrlParser: true, useUnifiedTopology: true}, () =>  {
+   console.log('connected to mongoDB: ', process.env.MONGO_URI)
+  })
+
 
 app.get('*', (req, res) => {
   res.render('error404')
