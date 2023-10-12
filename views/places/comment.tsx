@@ -1,8 +1,6 @@
-const React = require('react')
+const react = require('react')
 const Def = require('../default')
 const new_form = require('./new') 
-
-
 
 function comment_form () {
     return (
